@@ -185,7 +185,7 @@
         }
 
         /* ==========================================================================
-           NAVIGATION (Logo Embedded)
+           NAVIGATION & OPTIMIZED LOGO RENDER
            ========================================================================== */
         header {
             position: fixed;
@@ -211,12 +211,23 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
+        /* Highly optimized responsive logo class */
         .logo-img {
-            height: 50px; /* Adjust based on logo proportions */
+            height: 48px;
             width: auto;
+            max-width: 180px; /* Safety constraint */
+            object-fit: contain; /* Prevents stretching */
+            transition: var(--transition-smooth);
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .logo-img {
+                height: 38px; /* Scales down seamlessly on smaller phones */
+            }
         }
 
         .logo-text {
@@ -225,10 +236,10 @@
             font-weight: 800;
             letter-spacing: -0.5px;
             color: var(--text-main);
-            display: none; /* Hide text near logo on mobile */
+            display: none; /* Hide text near logo on mobile to prevent squishing */
         }
 
-        @media (min-width: 600px) {
+        @media (min-width: 768px) {
             .logo-text { display: block; }
         }
 
@@ -421,7 +432,7 @@
         .video-embed-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio Lock */
             height: 0;
             overflow: hidden;
         }
@@ -538,9 +549,14 @@
             text-align: center;
         }
 
+        /* Highly optimized footer logo */
         .footer-logo {
-            height: 60px;
+            height: 70px;
+            width: auto;
+            max-width: 250px;
+            object-fit: contain;
             margin: 0 auto 1.5rem auto;
+            display: block;
         }
 
         .footer-text {
@@ -597,7 +613,7 @@
     <header id="navbar">
         <div class="container nav-container">
             <a href="#home" class="logo-container">
-                <img src="logo.jpg" alt="Speak to Rise Logo" class="logo-img">
+                <img src="logo.jpg" alt="Speak to Rise Logo" class="logo-img" decoding="async">
                 <span class="logo-text">Speak to Rise</span>
             </a>
             <nav class="nav-links" id="nav-links">
@@ -745,7 +761,7 @@
 
     <footer>
         <div class="container">
-            <img src="logo.jpg" alt="Speak to Rise Logo" class="footer-logo">
+            <img src="logo.jpg" alt="Speak to Rise Logo" class="footer-logo" loading="lazy" decoding="async">
             
             <p class="footer-text">Empowering individuals through knowledge, spreading awareness, and inspiring purpose-driven growth for a sustainable future.</p>
             
@@ -837,15 +853,15 @@
         const revealElements = document.querySelectorAll('.reveal');
         
         const revealOptions = {
-            threshold: 0.15, // Triggers when 15% visible
-            rootMargin: "0px 0px -50px 0px" // Slight offset for smoother feel
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px" 
         };
 
         const revealOnScroll = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Only animate once
+                observer.unobserve(entry.target);
             });
         }, revealOptions);
 
@@ -868,7 +884,6 @@
 
             // Gather Data
             const formData = new FormData(form);
-            // Valid email confirmed in instructions
             const targetEmail = "renganathr2135@gmail.com"; 
             
             // Post data to FormSubmit AJAX endpoint
@@ -885,7 +900,7 @@
                     // Success UI
                     statusDiv.innerHTML = "Thank you! Your suggestion has been sent successfully. We appreciate your input.";
                     statusDiv.className = "form-message success";
-                    form.reset(); // Clear form
+                    form.reset();
                 } else {
                     // Server-side error
                     throw new Error("Form submission failed.");
