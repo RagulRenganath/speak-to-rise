@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak to Rise | Economics, Finance & Sustainable Futures</title>
+    <meta name="description" content="Cinematic explorations into environmental economics, climate finance, and the mechanics of a future society.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#050505",
+                        foreground: "#f5f5f5",
+                        emerald: { DEFAULT: "#10b981", dark: "#059669" },
+                        charcoal: "#121212",
+                    },
+                    fontFamily: {
+                        heading: ["Poppins", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Core Styling & Custom Scrollbar */
+        body {
+            background-color: #050505;
+            color: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #104024; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+        
+        /* Cinematic Visual Effects */
+        .bg-noise {
+            position: fixed; inset: 0; z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03; pointer-events: none;
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.12), rgba(5, 5, 5, 1) 70%);
+        }
+        .glass-card {
+            background: rgba(18, 18, 18, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Loading Screen */
+        #loader {
+            transition: opacity 0.8s ease-out, visibility 0.8s;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed; top: 0; z-index: 100; width: 100%; height: 3px; background: transparent;
+        }
+        .progress-bar {
+            height: 3px; background: #10b981; width: 0%;
+            box-shadow: 0 0 10px #10b981;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-emerald selection:text-white">
+
+    <div id="loader" class="fixed inset-0 z-[999] bg-background flex flex-col items-center justify-center">
+        <div class="w-12 h-12 border-t-2 border-emerald rounded-full animate-spin mb-4"></div>
+        <p class="font-heading tracking-widest text-emerald text-sm uppercase animate-pulse">Initializing Mainframe</p>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <div class="bg-noise"></div>
+
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 glass-card px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <span class="font-heading font-bold text-xl tracking-wider text-white cursor-pointer" onclick="window.scrollTo(0,0)">SPEAK TO <span class="text-emerald">RISE</span></span>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
+                <a href="#creator" class="hover:text-emerald transition-colors">The Creator</a>
+                <a href="#topics" class="hover:text-emerald transition-colors">Philosophy</a>
+                <a href="#videos" class="hover:text-emerald transition-colors">Transmissions</a>
+            </div>
+            <a href="#community" class="bg-emerald hover:bg-emerald-dark text-background px-6 py-2 rounded-full font-semibold transition-all text-sm shadow-[0_0_15px_rgba(16,185,129,0.2)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)]">Connect</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-glow pt-20 z-10">
+        <div class="text-center px-6 max-w-5xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white to-emerald/80 mb-6 leading-tight">
+                Decoding the Architecture<br>of a Future Society.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-light" data-aos="fade-up" data-aos-delay="200">
+                Bridging the gap between environmental economics, climate finance, and human behavior through highly immersive cinematic storytelling.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center" data-aos="fade-up" data-aos-delay="400">
+                <a href="#videos" class="px-8 py-4 bg-emerald text-background font-semibold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] hover:-translate-y-1">
+                    Watch Documentaries
+                </a>
+                <a href="https://www.youtube.com/@SpeaktoRise2135" target="_blank" class="px-8 py-4 bg-transparent border border-gray-600 hover:border-emerald text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-1">
+                    Subscribe to Channel
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="creator" class="py-24 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+            <div class="md:w-1/2 w-full" data-aos="fade-right">
+                <div class="aspect-square rounded-3xl bg-charcoal border border-emerald/20 overflow-hidden relative glass-card flex flex-col items-center justify-center group shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                   <div class="text-7xl mb-4 group-hover:scale-110 transition-transform duration-500">🎥</div>
+                   <p class="text-gray-500 font-heading tracking-widest text-sm">[ VISIONARY ARCHITECT ]</p>
+                </div>
+            </div>
+            <div class="md:w-1/2 w-full" data-aos="fade-left">
+                <h2 class="text-emerald font-bold tracking-widest text-sm uppercase mb-3">Behind the Lens</h2>
+                <h3 class="text-4xl md:text-5xl font-heading font-bold mb-6">Hello, I'm Ragul.</h3>
+                <p class="text-gray-300 mb-6 leading-relaxed text-lg font-light">
+                    My work lies at the exact intersection of complex financial systems and cinematic storytelling. With a foundation in Economics from PSG College of Arts and Science and advanced academic studies in Finance, my goal is to decode the hidden mechanisms driving our world.
+                </p>
+                <p class="text-gray-400 mb-8 leading-relaxed font-light">
+                    Whether I am researching how Econophysics can solve real-world economic anomalies or analyzing the behavioral psychology behind climate finance, <strong>Speak to Rise</strong> serves as the visual translation of these concepts. It is an educational platform designed not just to inform, but to architect a smarter, future-focused society.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#topics" class="text-white border-b border-emerald pb-1 hover:text-emerald transition-colors font-medium">Explore the philosophy ↗</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="topics" class="py-24 px-6 relative z-10 bg-gradient-to-b from-transparent to-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4">Core Philosophy</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Analyzing the global frameworks that dictate our reality.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-10 rounded-2xl hover:border-emerald/50 transition-all duration-300 group hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-emerald/10 text-emerald rounded-xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform">🌍</div>
+                    <h3 class="text-xl font-heading font-semibold mb-4">Environmental Economics</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Evaluating the intersection of market forces and ecological sustainability to build resilient financial models.</p>
+                </div>
+                <div class="glass-card p-10 rounded-2xl hover:border-emerald/50 transition-all duration-300 group hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-emerald/10 text-emerald rounded-xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform">📈</div>
+                    <h3 class="text-xl font-heading font-semibold mb-4">Climate Finance</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Understanding how global capital is mobilized to mitigate climate change and fuel future innovations.</p>
+                </div>
+                <div class="glass-card p-10 rounded-2xl hover:border-emerald/50 transition-all duration-300 group hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-emerald/10 text-emerald rounded-xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform">🧠</div>
+                    <h3 class="text-xl font-heading font-semibold mb-4">Human Behavior</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Analyzing consumerism, societal shifts, and the psychological mechanisms that drive global economic trends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="py-32 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-heading font-bold mb-12 text-center" data-aos="fade-up">Latest Transmissions</h2>
+            
+            <div id="youtube-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="col-span-full flex flex-col items-center justify-center py-20 text-emerald animate-pulse">
+                    <div class="w-8 h-8 border-t-2 border-emerald rounded-full animate-spin mb-4"></div>
+                    Establishing secure uplink to YouTube databanks...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="community" class="py-24 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto glass-card p-8 md:p-14 rounded-3xl relative overflow-hidden" data-aos="zoom-in">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald to-transparent"></div>
+            <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">Join the Discourse</h2>
+            <p class="text-gray-400 text-center mb-10 max-w-xl mx-auto">Suggest a topic for the next documentary, pitch a collaboration, or share your academic insights.</p>
+            
+            <form action="https://formsubmit.co/renganathr2135@gmail.com" method="POST" class="space-y-6">
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="Speak to Rise: New Transmission Received!" />
+                <input type="hidden" name="_template" value="table">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" name="name" required placeholder="Your Identity / Name" class="w-full bg-background/50 border border-gray-800 rounded-xl p-4 text-white focus:outline-none focus:border-emerald focus:ring-1 focus:ring-emerald transition-all" />
+                    <input type="email" name="email" required placeholder="Your Comms (Email)" class="w-full bg-background/50 border border-gray-800 rounded-xl p-4 text-white focus:outline-none focus:border-emerald focus:ring-1 focus:ring-emerald transition-all" />
+                </div>
+                <input type="text" name="topic" placeholder="Suggested Research Topic (Optional)" class="w-full bg-background/50 border border-gray-800 rounded-xl p-4 text-white focus:outline-none focus:border-emerald focus:ring-1 focus:ring-emerald transition-all" />
+                <textarea name="message" required rows="5" placeholder="Your Insights..." class="w-full bg-background/50 border border-gray-800 rounded-xl p-4 text-white focus:outline-none focus:border-emerald focus:ring-1 focus:ring-emerald transition-all resize-none"></textarea>
+                
+                <button type="submit" class="w-full bg-white text-black font-bold tracking-widest uppercase py-4 rounded-xl hover:bg-emerald hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]">
+                    Transmit Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center border-t border-gray-900 mt-12 relative z-10 glass-card">
+        <h4 class="font-heading font-bold text-2xl text-white mb-6">SPEAK TO <span class="text-emerald">RISE</span></h4>
+        <p class="text-gray-500 font-heading text-sm mb-6">© 2026 Ragul Renganath. Forging a sustainable future.</p>
+        <div class="flex justify-center space-x-6">
+            <a href="https://www.youtube.com/@SpeaktoRise2135" target="_blank" class="text-gray-400 hover:text-emerald transition-colors font-medium">YouTube</a>
+            <a href="mailto:renganathr2135@gmail.com" class="text-gray-400 hover:text-emerald transition-colors font-medium">Contact</a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 1. Remove Loader on Load
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.visibility = 'hidden', 800);
+        });
+
+        // 2. Initialize Scroll Animations
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // 3. Scroll Progress Bar
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        };
+
+        // 4. SECURE YOUTUBE RSS AUTOMATION (NO API KEY REQUIRED)
+        const CHANNEL_ID = 'UC5djZHbotPShAEJwgdOV9pw';
+        const RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+        const CONVERTER_API = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
+
+        async function fetchYouTubeVideosSecurely() {
+            const grid = document.getElementById('youtube-grid');
+            
+            try {
+                const response = await fetch(CONVERTER_API);
+                const data = await response.json();
+                
+                if (data.status === 'ok' && data.items.length > 0) {
+                    grid.innerHTML = ''; // Clear loading state
+                    const latestVideos = data.items.slice(0, 3); // Get top 3
+                    
+                    latestVideos.forEach((video, index) => {
+                        const delay = index * 150;
+                        const cleanDescription = video.description.replace(/(<([^>]+)>)/gi, "").substring(0, 120) + "...";
+                        
+                        // Extract high-res thumbnail by modifying the default URL
+                        const highResThumb = video.thumbnail.replace("hqdefault", "maxresdefault");
+
+                        const card = `
+                            <div class="group glass-card rounded-2xl overflow-hidden hover:border-emerald/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="${delay}">
+                                <div class="relative aspect-video overflow-hidden bg-charcoal">
+                                    <img src="${highResThumb}" onerror="this.src='${video.thumbnail}'" alt="${video.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                                    <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+                                        <a href="${video.link}" target="_blank" class="bg-emerald text-background px-8 py-3 rounded-full font-bold shadow-[0_0_20px_rgba(16,185,129,0.5)] transform scale-90 group-hover:scale-100 transition-all duration-300">Play Documentary</a>
+                                    </div>
+                                </div>
+                                <div class="p-8">
+                                    <h3 class="font-heading font-semibold text-xl line-clamp-2 mb-3 text-white group-hover:text-emerald transition-colors">${video.title}</h3>
+                                    <p class="text-sm text-gray-400 line-clamp-3 leading-relaxed">${cleanDescription}</p>
+                                </div>
+                            </div>
+                        `;
+                        grid.insertAdjacentHTML('beforeend', card);
+                    });
+                } else {
+                    grid.innerHTML = '<div class="col-span-full text-center text-gray-400 border border-gray-800 rounded-2xl p-10">No transmissions found on this channel yet. Ensure your channel has public videos.</div>';
+                }
+            } catch (error) {
+                grid.innerHTML = '<div class="col-span-full text-center text-red-500 border border-red-900/50 bg-red-900/10 rounded-2xl p-10">Error establishing secure video feed link. Please try refreshing.</div>';
+            }
+        }
+
+        fetchYouTubeVideosSecurely();
+    </script>
+</body>
+</html>
