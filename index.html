@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Speak to Rise - A modern educational and awareness-driven platform focused on preparation, communication, sustainability, personal growth, and meaningful learning.">
     <meta name="keywords" content="sustainability, educational documentaries, environmental awareness, economics, climate awareness, future society, Speak to Rise, personal growth, communication, preparation, self-improvement">
     <meta name="author" content="Speak to Rise">
     
-    <!-- Open Graph SEO -->
     <meta property="og:title" content="Speak to Rise | Prepare Smarter. Rise Meaningfully.">
     <meta property="og:description" content="Cinematic educational content on sustainability, personal growth, and future readiness.">
     <meta property="og:type" content="website">
@@ -15,12 +14,10 @@
     
     <title>Speak to Rise | Cinematic Educational Platform</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -30,11 +27,11 @@
         :root {
             --bg-base: #050505;
             --bg-surface: #111111;
-            --bg-glass: rgba(17, 17, 17, 0.7);
+            --bg-glass: rgba(17, 17, 17, 0.85);
             
             --color-primary: #00d26a; /* Emerald Green */
             --color-primary-glow: rgba(0, 210, 106, 0.4);
-            --color-secondary: #facc15; /* Cinematic Yellow/Gold */
+            --color-secondary: #facc15; /* Cinematic Yellow/Gold matches logo */
             --color-secondary-glow: rgba(250, 204, 21, 0.3);
             
             --text-main: #ffffff;
@@ -74,7 +71,7 @@
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             background: 
-                radial-gradient(circle at 15% 20%, rgba(0, 210, 106, 0.07), transparent 40%),
+                radial-gradient(circle at 15% 20%, rgba(0, 210, 106, 0.05), transparent 40%),
                 radial-gradient(circle at 85% 80%, rgba(250, 204, 21, 0.05), transparent 40%);
             z-index: -1;
             pointer-events: none;
@@ -91,10 +88,6 @@
             color: inherit;
         }
 
-        ul {
-            list-style: none;
-        }
-
         img {
             max-width: 100%;
             display: block;
@@ -102,7 +95,7 @@
 
         /* Typography Utilities */
         .gradient-text {
-            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(to right, #ffffff, var(--color-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -117,9 +110,10 @@
         .section-subtitle {
             text-align: center;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
             max-width: 600px;
-            margin: 0 auto 4rem auto;
+            margin: 0 auto 3rem auto;
+            padding: 0 15px;
         }
 
         .container {
@@ -130,8 +124,12 @@
         }
 
         section {
-            padding: 100px 0;
+            padding: 80px 0;
             position: relative;
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
         }
 
         /* Buttons */
@@ -152,14 +150,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--color-primary), #00a653);
+            background: linear-gradient(135deg, var(--color-secondary), #b59410);
             color: var(--text-dark);
-            box-shadow: 0 4px 20px var(--color-primary-glow);
+            box-shadow: 0 4px 15px var(--color-secondary-glow);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px var(--color-primary-glow);
+            box-shadow: 0 8px 25px var(--color-secondary-glow);
         }
 
         .btn-outline {
@@ -170,10 +168,10 @@
         }
 
         .btn-outline:hover {
-            border-color: var(--color-secondary);
-            color: var(--color-secondary);
+            border-color: var(--color-primary);
+            color: var(--color-primary);
             transform: translateY(-3px);
-            box-shadow: 0 4px 20px var(--color-secondary-glow);
+            box-shadow: 0 4px 15px var(--color-primary-glow);
         }
 
         /* Scroll Progress */
@@ -187,12 +185,12 @@
         }
 
         /* ==========================================================================
-           NAVIGATION
+           NAVIGATION (Logo Embedded)
            ========================================================================== */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             z-index: 999;
             transition: var(--transition-smooth);
         }
@@ -201,7 +199,7 @@
             background: var(--bg-glass);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border-glass);
-            padding: 1rem 0;
+            padding: 0.5rem 0;
         }
 
         .nav-container {
@@ -210,33 +208,45 @@
             align-items: center;
         }
 
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px; /* Adjust based on logo proportions */
+            width: auto;
+        }
+
+        .logo-text {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: var(--text-main);
+            display: none; /* Hide text near logo on mobile */
         }
 
-        .logo span {
-            color: var(--color-secondary);
+        @media (min-width: 600px) {
+            .logo-text { display: block; }
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
         .nav-links a {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-muted);
             transition: var(--transition-smooth);
             position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--text-main);
         }
 
@@ -248,7 +258,7 @@
             transition: var(--transition-smooth);
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after, .nav-links a.active::after {
             width: 100%;
         }
 
@@ -257,22 +267,25 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-main);
+            padding: 0.5rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .nav-links {
                 position: fixed;
                 top: 0; right: -100%;
-                width: 70%; height: 100vh;
+                width: 80%; height: 100vh;
                 background: var(--bg-surface);
                 flex-direction: column;
                 justify-content: center;
                 border-left: 1px solid var(--border-glass);
                 transition: var(--transition-smooth);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
             }
             .nav-links.active {
                 right: 0;
             }
+            .nav-links a { font-size: 1.2rem; }
             .mobile-toggle {
                 display: block;
                 z-index: 1000;
@@ -283,13 +296,14 @@
            HERO SECTION
            ========================================================================== */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            padding-top: 80px;
+            padding-top: 100px;
+            padding-bottom: 50px;
         }
 
         .hero-content {
@@ -297,28 +311,17 @@
             z-index: 2;
         }
 
-        .hero-tagline {
-            display: inline-block;
-            padding: 0.4rem 1.2rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border-glass);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: var(--color-primary);
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.2rem, 7vw, 4.2rem);
             margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
             color: var(--text-muted);
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -334,275 +337,116 @@
         /* ==========================================================================
            PURPOSE SECTION
            ========================================================================== */
-        .purpose-grid {
+        .pillar-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .pillar-card {
             background: var(--bg-surface);
             border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: left;
+            border-radius: 24px;
+            padding: 3rem 2rem;
             transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
-        }
-
-        .pillar-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at top right, var(--color-primary-glow), transparent 60%);
-            opacity: 0;
-            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .pillar-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(0, 210, 106, 0.3);
-        }
-
-        .pillar-card:hover::before {
-            opacity: 1;
+            border-color: var(--color-primary-glow);
+            background: #161616;
         }
 
         .pillar-icon {
-            font-size: 2.5rem;
-            color: var(--color-secondary);
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .pillar-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
         }
 
         .pillar-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            position: relative;
-            z-index: 2;
         }
 
         /* ==========================================================================
-           ABOUT CREATOR
-           ========================================================================== */
-        .about-section {
-            background: linear-gradient(to bottom, var(--bg-base), rgba(17, 17, 17, 0.5));
+           VIDEO SECTION (RESPONSIVE EMBEDS)
+           ========================================================================= */
+        .video-section {
+            background-color: var(--bg-surface);
             border-top: 1px solid var(--border-glass);
             border-bottom: 1px solid var(--border-glass);
         }
 
-        .about-content {
+        .video-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-item h4 {
-            font-size: 2rem;
-            color: var(--color-primary);
-        }
-
-        .stat-item span {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .image-placeholder {
-            width: 100%;
-            aspect-ratio: 4/5;
-            background: var(--bg-surface);
-            border-radius: 20px;
-            border: 1px solid var(--border-glass);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .image-placeholder::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, transparent, var(--color-secondary-glow), transparent);
-            animation: shine 4s infinite linear;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%); }
-            100% { transform: translateX(100%) translateY(100%); }
-        }
-
-        @media (max-width: 900px) {
-            .about-content {
-                grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+            .video-grid {
+                grid-template-columns: 1fr; /* Force single column on very small screens */
             }
         }
 
-        /* ==========================================================================
-           LATEST VIDEOS (RSS FETCH)
-           ========================================================================== */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
         .video-card {
-            background: var(--bg-surface);
+            background: var(--bg-base);
             border: 1px solid var(--border-glass);
             border-radius: 16px;
             overflow: hidden;
             transition: var(--transition-smooth);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
 
         .video-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(250, 204, 21, 0.4);
+            border-color: var(--color-secondary-glow);
+            transform: scale(1.02);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .video-thumb {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background-color: #222;
+        /* The magic responsive video container */
+        .video-embed-container {
             position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             overflow: hidden;
         }
 
-        .video-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .video-card:hover .video-thumb img {
-            transform: scale(1.05);
-        }
-
-        .play-overlay {
+        .video-embed-container iframe {
             position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition-smooth);
-        }
-
-        .play-overlay i {
-            font-size: 3rem;
-            color: var(--color-secondary);
-            text-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
-            transform: scale(0.8);
-            transition: var(--transition-smooth);
-        }
-
-        .video-card:hover .play-overlay {
-            opacity: 1;
-        }
-        .video-card:hover .play-overlay i {
-            transform: scale(1);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
         }
 
         .video-info {
             padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
 
-        .video-title {
+        .video-card h3 {
             font-size: 1.1rem;
-            font-family: var(--font-heading);
             margin-bottom: 0.5rem;
             color: var(--text-main);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            line-height: 1.4;
         }
 
-        .video-date {
-            font-size: 0.85rem;
-            color: var(--color-primary);
-            margin-top: auto;
-        }
-
-        /* Loading Skeleton */
-        .skeleton {
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        .skeleton-thumb { width: 100%; aspect-ratio: 16/9; background: #222; border-radius: 16px 16px 0 0; }
-        .skeleton-text { height: 20px; background: #333; margin: 15px; border-radius: 4px; }
-        .skeleton-text.short { width: 50%; }
-
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-
-        /* ==========================================================================
-           CINEMATIC QUOTE
-           ========================================================================== */
-        .quote-section {
-            padding: 150px 0;
-            background: linear-gradient(rgba(5,5,5,0.8), rgba(5,5,5,0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
-            text-align: center;
-        }
-
-        .quote-text {
-            font-family: var(--font-heading);
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 700;
-            max-width: 1000px;
-            margin: 0 auto;
-            line-height: 1.3;
-        }
-
-        .quote-text span {
-            color: var(--color-primary);
+        .video-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
         /* ==========================================================================
@@ -612,26 +456,14 @@
             max-width: 700px;
             margin: 0 auto;
             background: var(--bg-surface);
-            padding: 3rem;
+            padding: clamp(1.5rem, 5vw, 3rem);
             border-radius: 24px;
             border: 1px solid var(--border-glass);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 50%; transform: translateX(-50%);
-            width: 100px; height: 3px;
-            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-            border-radius: 0 0 5px 5px;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
-            position: relative;
         }
 
         .form-label {
@@ -639,6 +471,7 @@
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
             color: var(--text-muted);
+            font-weight: 500;
         }
 
         .form-input {
@@ -662,12 +495,12 @@
 
         textarea.form-input {
             resize: vertical;
-            min-height: 120px;
+            min-height: 150px;
         }
 
         .form-submit {
             width: 100%;
-            padding: 1.2rem;
+            padding: 1rem;
             font-size: 1.1rem;
             margin-top: 1rem;
         }
@@ -678,6 +511,7 @@
             border-radius: 8px;
             text-align: center;
             display: none;
+            font-size: 0.9rem;
         }
 
         .form-message.success {
@@ -694,10 +528,6 @@
             border: 1px solid #ff4d4d;
         }
 
-        @media (max-width: 600px) {
-            .contact-container { padding: 2rem 1.5rem; }
-        }
-
         /* ==========================================================================
            FOOTER
            ========================================================================== */
@@ -705,48 +535,40 @@
             background: #000;
             padding: 4rem 0 2rem;
             border-top: 1px solid var(--border-glass);
+            text-align: center;
         }
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .footer-logo {
+            height: 60px;
+            margin: 0 auto 1.5rem auto;
         }
 
-        .footer-brand {
-            max-width: 300px;
-        }
-
-        .footer-brand p {
+        .footer-text {
             color: var(--text-muted);
-            margin-top: 1rem;
-            font-size: 0.9rem;
+            max-width: 500px;
+            margin: 0 auto 2rem auto;
+            font-size: 0.95rem;
         }
 
-        .footer-links h4 {
-            color: var(--text-main);
-            margin-bottom: 1.5rem;
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .footer-links ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links ul li a {
+        .social-link {
+            font-size: 1.5rem;
             color: var(--text-muted);
             transition: var(--transition-smooth);
-            font-size: 0.9rem;
         }
 
-        .footer-links ul li a:hover {
+        .social-link:hover {
             color: var(--color-secondary);
-            padding-left: 5px;
+            transform: scale(1.1);
         }
 
         .footer-bottom {
-            text-align: center;
             padding-top: 2rem;
             border-top: 1px solid var(--border-glass);
             color: var(--text-muted);
@@ -758,8 +580,8 @@
            ========================================================================== */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .reveal.active {
@@ -770,149 +592,126 @@
 </head>
 <body>
 
-    <!-- Scroll Progress Indicator -->
     <div id="progress-bar"></div>
 
-    <!-- Navigation -->
     <header id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">Speak to <span>Rise</span></a>
+            <a href="#home" class="logo-container">
+                <img src="logo.jpg" alt="Speak to Rise Logo" class="logo-img">
+                <span class="logo-text">Speak to Rise</span>
+            </a>
             <nav class="nav-links" id="nav-links">
+                <a href="#home" class="active">Home</a>
                 <a href="#purpose">Purpose</a>
-                <a href="#about">About</a>
-                <a href="#videos">Latest Videos</a>
-                <a href="#request">Suggest Topic</a>
+                <a href="#videos">Videos</a>
+                <a href="#request">Suggest</a>
             </nav>
             <i class="fas fa-bars mobile-toggle" id="mobile-toggle"></i>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content reveal active">
-            <div class="hero-tagline">Cinematic Educational Media</div>
-            <h1><span class="gradient-text">Prepare Smarter.</span><br>Communicate Better.<br>Rise Meaningfully.</h1>
-            <p>A modern platform dedicated to sustainability, future-readiness, intellectual self-development, and spreading awareness through cinematic storytelling.</p>
+            <h1>Prepare Smarter.<br>Communicate Better.<br><span class="gradient-text">Rise Meaningfully.</span></h1>
+            <p>A premium educational media platform dedicated to sustainability, communication mastery, personal growth, and future readiness through cinematic storytelling.</p>
             <div class="hero-buttons">
                 <a href="#videos" class="btn btn-primary"><i class="fas fa-play"></i> Watch Latest</a>
-                <a href="https://www.youtube.com/channel/UC5djZHbotPShAEJwgdOV9pw" target="_blank" class="btn btn-outline"><i class="fab fa-youtube"></i> Visit Channel</a>
+                <a href="#purpose" class="btn btn-outline">Explore Mission</a>
             </div>
         </div>
     </section>
 
-    <!-- Purpose / Pillars Section -->
     <section id="purpose">
         <div class="container">
-            <h2 class="section-title reveal">The Core <span class="gradient-text">Philosophy</span></h2>
-            <p class="section-subtitle reveal">Empowering individuals through knowledge. We focus on bridging the gap between current awareness and future readiness.</p>
+            <h2 class="section-title reveal">Our Core <span class="gradient-text">Pillars</span></h2>
+            <p class="section-subtitle reveal">Distilling complex modern realities into actionable knowledge for intellectual and personal transformation.</p>
             
-            <div class="purpose-grid">
+            <div class="pillar-grid">
                 <div class="pillar-card reveal">
-                    <i class="fas fa-book-open pillar-icon"></i>
+                    <i class="fas fa-brain pillar-icon"></i>
                     <h3>Preparation</h3>
-                    <p>Study smart, embrace strategic learning, and build the discipline required to master academic and real-world challenges.</p>
+                    <p>Strategic learning, academic growth, skill building, and the discipline required for future challenges.</p>
                 </div>
                 <div class="pillar-card reveal" style="transition-delay: 0.1s;">
                     <i class="fas fa-microphone-alt pillar-icon"></i>
                     <h3>Public Speaking</h3>
-                    <p>Master communication, build bold confidence, and express your ideas with clarity to command any professional room.</p>
+                    <p>Communication mastery, confidence building, articulation, and professional expression.</p>
                 </div>
                 <div class="pillar-card reveal" style="transition-delay: 0.2s;">
                     <i class="fas fa-seedling pillar-icon"></i>
                     <h3>Personal Growth</h3>
-                    <p>Optimize your life, develop a resilient mindset, and pursue continuous intellectual and career advancement.</p>
+                    <p>Self-development, productivity optimization, mindset shifts, and career advancement.</p>
                 </div>
                 <div class="pillar-card reveal" style="transition-delay: 0.3s;">
-                    <i class="fas fa-compass pillar-icon"></i>
-                    <h3>Life Lessons</h3>
-                    <p>Gain practical wisdom, understand global sustainability, and navigate modern society with a heightened sense of awareness.</p>
+                    <i class="fas fa-globe-americas pillar-icon"></i>
+                    <h3>Awareness</h3>
+                    <p>Sustainability, environmental economics, societal trends, and practical life wisdom.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container about-content">
-            <div class="about-image reveal">
-                <!-- Abstract visual placeholder representing the brand's premium identity -->
-                <div class="image-placeholder">
-                    <i class="fas fa-globe" style="font-size: 8rem; color: rgba(255,255,255,0.05);"></i>
-                    <h2 style="position:absolute; bottom: 20px; left: 20px; color: var(--color-secondary); opacity: 0.8;">@SpeaktoRise2135</h2>
-                </div>
-            </div>
-            <div class="about-text reveal">
-                <h2>A Movement Toward <br><span class="gradient-text">Self-Growth</span></h2>
-                <p><strong>Speak to Rise</strong> is not just a YouTube channel; it is a futuristic educational ecosystem. We distill complex realities concerning sustainability, environmental economics, and technology into engaging, cinematic narratives.</p>
-                <p>Our mission is simple: to inspire people to prepare better, communicate effectively, grow continuously, and rise meaningfully in a rapidly evolving world.</p>
-                
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <h4>100%</h4>
-                        <span>Purpose-Driven</span>
-                    </div>
-                    <div class="stat-item">
-                        <h4>Future</h4>
-                        <span>Focused</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Latest Videos (Auto Fetched) Section -->
-    <section id="videos">
+    <section id="videos" class="video-section">
         <div class="container">
-            <h2 class="section-title reveal">Latest <span class="gradient-text">Documentaries</span></h2>
-            <p class="section-subtitle reveal">Auto-updated directly from the channel. Watch our newest cinematic explanations and growth lessons.</p>
+            <h2 class="section-title reveal">Featured <span class="gradient-text">Content</span></h2>
+            <p class="section-subtitle reveal">Explore our latest cinematic documentaries and educational insights.</p>
             
-            <div class="video-grid" id="video-container">
-                <!-- Skeletons while loading -->
-                <div class="video-card skeleton-card">
-                    <div class="skeleton-thumb skeleton"></div>
-                    <div class="skeleton-text skeleton"></div>
-                    <div class="skeleton-text short skeleton"></div>
+            <div class="video-grid">
+                
+                <div class="video-card reveal">
+                    <div class="video-embed-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZUkTXxpN0Sc?si=_qbobA3qUXg1nHqi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Prepare Smarter. Communicate Better. Grow Continuously. Rise Meaningfully.</h3>
+                        <p>An introduction to the mission of Speak to Rise.</p>
+                    </div>
                 </div>
-                <div class="video-card skeleton-card">
-                    <div class="skeleton-thumb skeleton"></div>
-                    <div class="skeleton-text skeleton"></div>
-                    <div class="skeleton-text short skeleton"></div>
+
+                <div class="video-card reveal" style="transition-delay: 0.1s;">
+                    <div class="video-embed-container">
+                        <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#222; color:#555;">
+                            <i class="fab fa-youtube fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Upcoming Documentary</h3>
+                        <p>Short description of the next insightful video topic coming soon.</p>
+                    </div>
                 </div>
-                <div class="video-card skeleton-card">
-                    <div class="skeleton-thumb skeleton"></div>
-                    <div class="skeleton-text skeleton"></div>
-                    <div class="skeleton-text short skeleton"></div>
+
+                <div class="video-card reveal" style="transition-delay: 0.2s;">
+                    <div class="video-embed-container">
+                        <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#222; color:#555;">
+                            <i class="fab fa-youtube fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Upcoming Insight</h3>
+                        <p>Short description of another upcoming video focused on growth.</p>
+                    </div>
                 </div>
+
             </div>
-            
-            <div style="text-align: center; margin-top: 3rem;" class="reveal">
-                <a href="https://www.youtube.com/channel/UC5djZHbotPShAEJwgdOV9pw/videos" target="_blank" class="btn btn-outline">Explore All Topics on YouTube <i class="fas fa-arrow-right"></i></a>
+
+            <div style="text-align: center; margin-top: 4rem;" class="reveal">
+                <a href="https://www.youtube.com/channel/UC5djZHbotPShAEJwgdOV9pw" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-youtube"></i> View All Videos on YouTube
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Cinematic Quote -->
-    <section class="quote-section">
-        <div class="container reveal">
-            <div class="quote-text">
-                "Growth through <span>knowledge</span>.<br>Transformation through <span>awareness</span>."
-            </div>
-        </div>
-    </section>
-
-    <!-- Community Request Form -->
     <section id="request">
         <div class="container">
             <h2 class="section-title reveal">Suggest a <span class="gradient-text">Topic</span></h2>
-            <p class="section-subtitle reveal">What should we explore next? Environmental economics, public speaking tips, or future trends? Let us know.</p>
+            <p class="section-subtitle reveal">Shape the future of content. Let us know what sustainability, growth, or communication topics you want us to cover.</p>
             
             <div class="contact-container reveal">
-                <!-- Using FormSubmit AJAX approach -->
                 <form id="topic-form" onsubmit="submitForm(event)">
-                    <!-- Anti-spam honeypot -->
                     <input type="text" name="_honey" style="display:none">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="New Topic Suggestion for Speak to Rise!">
+                    <input type="hidden" name="_subject" value="New Video Topic Suggestion!">
 
                     <div class="form-group">
                         <label class="form-label" for="name">Your Name</label>
@@ -926,12 +725,12 @@
 
                     <div class="form-group">
                         <label class="form-label" for="topic">Suggested Topic</label>
-                        <input type="text" id="topic" name="topic" class="form-input" required placeholder="e.g. The Economics of Climate Change">
+                        <input type="text" id="topic" name="topic" class="form-input" required placeholder="e.g., Environmental Economics in India">
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="message">Why this topic?</label>
-                        <textarea id="message" name="message" class="form-input" required placeholder="Tell us why this would make a great cinematic video..."></textarea>
+                        <label class="form-label" for="message">Why is this important?</label>
+                        <textarea id="message" name="message" class="form-input" required placeholder="Tell us why this topic matters..."></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary form-submit" id="submit-btn">
@@ -944,41 +743,28 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="logo">Speak to <span>Rise</span></a>
-                    <p>A cinematic digital ecosystem focused on sustainability, communication mastery, and personal growth.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#purpose">Core Purpose</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#videos">Latest Docs</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-links">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="https://www.youtube.com/channel/UC5djZHbotPShAEJwgdOV9pw" target="_blank"><i class="fab fa-youtube"></i> YouTube Channel</a></li>
-                        <li><a href="#request"><i class="fas fa-envelope"></i> Contact</a></li>
-                    </ul>
-                </div>
+            <img src="logo.jpg" alt="Speak to Rise Logo" class="footer-logo">
+            
+            <p class="footer-text">Empowering individuals through knowledge, spreading awareness, and inspiring purpose-driven growth for a sustainable future.</p>
+            
+            <div class="footer-social">
+                <a href="https://www.youtube.com/channel/UC5djZHbotPShAEJwgdOV9pw" target="_blank" class="social-link" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:renganathr2135@gmail.com" class="social-link" title="Email Us">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> Speak to Rise. All Rights Reserved. Designed for futuristic growth.</p>
+                <p>&copy; <span id="year"></span> Speak to Rise. All Rights Reserved.</p>
+                <p style="font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.5;">Cinematic Educational Platform</p>
             </div>
         </div>
     </footer>
 
-    <!-- Internal JavaScript -->
     <script>
         // 1. Set Current Year in Footer
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -998,6 +784,7 @@
             }
         });
 
+        // Close mobile menu when clicking a link
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -1006,114 +793,65 @@
             });
         });
 
-        // 3. Scroll Events (Navbar styling & Progress Bar)
+        // 3. Scroll Events (Navbar styling, Progress Bar, Active Link)
         const navbar = document.getElementById('navbar');
         const progressBar = document.getElementById('progress-bar');
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
 
         window.addEventListener('scroll', () => {
-            // Navbar blur effect
-            if (window.scrollY > 50) {
+            const scrollY = window.pageYOffset;
+
+            // Navbar background on scroll
+            if (scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
 
-            // Progress bar calculation
+            // Progress bar
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             progressBar.style.width = scrolled + "%";
+
+            // Active link highlighting
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navItems.forEach((item) => {
+                item.classList.remove("active");
+                if (item.getAttribute("href").slice(1) === current) {
+                    item.classList.add("active");
+                }
+            });
         });
 
         // 4. Scroll Reveal Animation using Intersection Observer
         const revealElements = document.querySelectorAll('.reveal');
         
         const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
+            threshold: 0.15, // Triggers when 15% visible
+            rootMargin: "0px 0px -50px 0px" // Slight offset for smoother feel
         };
 
         const revealOnScroll = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target);
+                observer.unobserve(entry.target); // Only animate once
             });
         }, revealOptions);
 
         revealElements.forEach(el => revealOnScroll.observe(el));
 
-        // 5. Auto-Fetch YouTube Videos via RSS to JSON
-        async function fetchYouTubeVideos() {
-            const channelId = 'UC5djZHbotPShAEJwgdOV9pw';
-            const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-            const container = document.getElementById('video-container');
-
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-                
-                if (data.status === 'ok' && data.items.length > 0) {
-                    container.innerHTML = ''; // Clear skeletons
-                    
-                    // Display up to 6 latest videos
-                    const videosToDisplay = data.items.slice(0, 6);
-                    
-                    videosToDisplay.forEach((video, index) => {
-                        // Extract high quality thumbnail
-                        let thumbUrl = video.thumbnail;
-                        let videoIdMatch = video.link.match(/(?:v=|\/)([a-zA-Z0-9_-]{11})/);
-                        if(videoIdMatch && videoIdMatch[1]) {
-                            thumbUrl = `https://img.youtube.com/vi/${videoIdMatch[1]}/maxresdefault.jpg`;
-                        }
-
-                        // Format Date
-                        const pubDate = new Date(video.pubDate).toLocaleDateString('en-US', {
-                            year: 'numeric', month: 'long', day: 'numeric'
-                        });
-
-                        const delay = index * 0.1;
-
-                        const cardHTML = `
-                            <a href="${video.link}" target="_blank" class="video-card reveal" style="animation-delay: ${delay}s">
-                                <div class="video-thumb">
-                                    <img src="${thumbUrl}" alt="Video Thumbnail" onerror="this.src='${video.thumbnail}'">
-                                    <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
-                                </div>
-                                <div class="video-info">
-                                    <h3 class="video-title">${video.title}</h3>
-                                    <span class="video-date">${pubDate}</span>
-                                </div>
-                            </a>
-                        `;
-                        container.insertAdjacentHTML('beforeend', cardHTML);
-                    });
-
-                    // Trigger reveal for newly added DOM elements
-                    document.querySelectorAll('#video-container .reveal').forEach(el => {
-                        setTimeout(() => el.classList.add('active'), 100);
-                    });
-
-                } else {
-                    throw new Error("No videos found");
-                }
-            } catch (error) {
-                console.error("Error fetching videos:", error);
-                container.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">
-                        <i class="fab fa-youtube" style="font-size: 3rem; color: #ff0000; margin-bottom: 1rem;"></i>
-                        <h3>Unable to load latest videos</h3>
-                        <p>Please visit our <a href="https://www.youtube.com/channel/UC5djZHbotPShAEJwgdOV9pw" target="_blank" style="color: var(--color-primary); text-decoration: underline;">YouTube Channel</a> to watch the latest content.</p>
-                    </div>
-                `;
-            }
-        }
-
-        // Initialize fetch on load
-        document.addEventListener('DOMContentLoaded', fetchYouTubeVideos);
-
-        // 6. Community Request Form Submission (AJAX FormSubmit)
+        // 5. Form Submission (AJAX FormSubmit)
         function submitForm(event) {
             event.preventDefault();
             
@@ -1121,7 +859,7 @@
             const submitBtn = document.getElementById('submit-btn');
             const statusDiv = document.getElementById('form-status');
             
-            // UI Feedback Loading
+            // Set Loading State
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.style.opacity = '0.7';
             submitBtn.disabled = true;
@@ -1130,8 +868,10 @@
 
             // Gather Data
             const formData = new FormData(form);
-            const targetEmail = "renganathr2135@gmail.com";
+            // Valid email confirmed in instructions
+            const targetEmail = "renganathr2135@gmail.com"; 
             
+            // Post data to FormSubmit AJAX endpoint
             fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
                 method: "POST",
                 headers: {
@@ -1141,20 +881,24 @@
             })
             .then(response => response.json())
             .then(data => {
-                if(data.success) {
-                    statusDiv.innerHTML = "Success! Your topic suggestion has been received. Thank you for helping us grow.";
+                if(data.success === "true" || data.success === true) {
+                    // Success UI
+                    statusDiv.innerHTML = "Thank you! Your suggestion has been sent successfully. We appreciate your input.";
                     statusDiv.className = "form-message success";
-                    form.reset();
+                    form.reset(); // Clear form
                 } else {
-                    throw new Error("Form submission failed");
+                    // Server-side error
+                    throw new Error("Form submission failed.");
                 }
             })
             .catch(error => {
                 console.error(error);
-                statusDiv.innerHTML = "Oops! Something went wrong. Please try again later.";
+                // Error UI
+                statusDiv.innerHTML = "Oops! Something went wrong while sending. Please try again later or email us directly.";
                 statusDiv.className = "form-message error";
             })
             .finally(() => {
+                // Restore Button State
                 submitBtn.innerHTML = '<span>Send Suggestion</span> <i class="fas fa-paper-plane"></i>';
                 submitBtn.style.opacity = '1';
                 submitBtn.disabled = false;
